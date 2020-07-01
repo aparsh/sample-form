@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>from</title>
+    <script src= "https://code.jquery.com/jquery-1.12.4.min.js"> 
+  </script> 
+</head>
+<body>
+    <form>
+        <label for="fname">Email Id:</label><br>
+        <input type="text" id="fname" name="fname" placeholder="email id"><br>
+
+        <label for="lname">Password:</label><br>
+        <input type="password" id="lname" name="lname" placeholder="password" minlength="8"><br><br>
+        <p id="appear" style="color:tomato;"></p><br>
+        <label for="remember">Remember me</label>
+        <input type="checkbox" id="remember" name="remember"><br><br>
+    </form>
+      <button type="submit" id="submitbtn">Submit</button>
+
+      <script>
+        $(document).ready(function(){
+            $("button").click(function (){ 
+                 if($("#lname").val().length<8)
+                 {
+                    $("#appear").css('color', 'red');
+                    $("#appear").html("min 8 characters req as password!!");
+                 }
+                 else
+                 {
+                    $("#appear").html("");
+                    if($("#remember").prop("checked")==true)
+                    {
+                        $("#appear").css('color', 'blue');
+                        $("#appear").html("I remeber!!!!");
+                    }
+                    else
+                    {
+                        $("#appear").css('color', 'blue');
+                        $("#appear").html("I cannot remeber!!!!");
+                        $("#fname").prop("value", "");
+                        $("#lname").prop("value", "");
+                    }
+                 }
+            });
+        });
+    </script>
+</body>
+</html>
